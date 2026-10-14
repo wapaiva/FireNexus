@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+:root {
+  --fn-bg: #ffffff;
+  --fn-fg: #111827;
+  --fn-muted: #4b5563;
+  --fn-accent: #b91c1c;
+  --fn-surface: #f9fafb;
+  --fn-border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fn-bg: #0b0f14;
+    --fn-fg: #f3f4f6;
+    --fn-muted: #9ca3af;
+    --fn-accent: #f87171;
+    --fn-surface: #111827;
+    --fn-border: #1f2937;
+  }
+}
+
+body {
+  background: var(--fn-bg);
+  color: var(--fn-fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
