@@ -1,7 +1,17 @@
 import Link from "next/link";
 import { AuthForm } from "@/components/auth-form";
 
-export default function LoginPage() {
+type LoginPageProps = {
+  searchParams: Promise<{ error?: string }>;
+};
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const initialMessage =
+    params.error === "confirmation"
+      ? "Não foi possível confirmar a sessão pelo link recebido. Solicite um novo e-mail ou tente entrar novamente."
+      : "";
+
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center gap-6 px-6 py-12">
       <Link href="/" className="text-sm" style={{ color: "var(--fn-muted)" }}>
@@ -16,7 +26,7 @@ export default function LoginPage() {
           Use seu e-mail e senha. Contas novas precisam confirmar o endereço de e-mail.
         </p>
       </div>
-      <AuthForm mode="login" />
+      <AuthForm mode="login" initialMessage={initialMessage} />
       <p className="text-sm" style={{ color: "var(--fn-muted)" }}>
         Ainda não tem conta? <Link className="font-semibold underline" href="/signup">Criar cadastro</Link>
       </p>
