@@ -5,12 +5,13 @@ import { createClient } from "@/lib/supabase/client";
 
 type AuthFormProps = {
   mode: "login" | "signup";
+  initialMessage?: string;
 };
 
-export function AuthForm({ mode }: AuthFormProps) {
+export function AuthForm({ mode, initialMessage = "" }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const isSignup = mode === "signup";
 
